@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ExpandableTextView">
+        <attr name="collapsedLines" format="integer" />
+        <attr name="readMoreText" format="string" />
+        <attr name="readLessText" format="string" />
+        <attr name="readMoreTextColor" format="color" />
+        <attr name="readMoreTextSize" format="dimension" />
+        <attr name="readMoreBold" format="boolean" />
+    </declare-styleable>
+
+</resources>
+
+
