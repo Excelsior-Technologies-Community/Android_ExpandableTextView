@@ -1,12 +1,11 @@
 plugins {
     alias(libs.plugins.android.library)
+    id("maven-publish")
 }
 
 android {
     namespace = "com.ext.expandabletextview"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 24
@@ -28,6 +27,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
 }
 
 dependencies {
@@ -37,4 +41,24 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+
+                from(components["release"])
+
+                // CHANGE THIS TO YOUR USERNAME
+                groupId = "com.github.Excelsior-Technologies-Community"
+
+                // THIS CAN BE YOUR LIBRARY NAME
+                artifactId = "expandabletextview"
+
+                // This can be anything for now
+                version = "1.0.0"
+            }
+        }
+    }
 }
